@@ -58,6 +58,7 @@ public class CommentService {
         Comment comment = Comment.builder()
                 .member(member)
                 .post(post)
+                .nickname(requestDto.getNickname())
                 .content(requestDto.getContent())
                 .build();
         commentRepository.save(comment);

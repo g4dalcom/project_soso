@@ -74,6 +74,8 @@ public class SecurityConfiguration {
                 .antMatchers("/api/auth/comment/**").permitAll()
                 .antMatchers("/api/auth/subComment/**").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**/*").permitAll()
+                .antMatchers("/h2-console").permitAll()
+                .antMatchers("/api/auth/like/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
 //                .apply(new JwtSecurityConfiguration(tokenProvider));
