@@ -29,6 +29,9 @@ public class Post extends Timestamped {
     @Column
     private String fileName;
 
+    @Column
+    private String nickname;
+
     @JoinColumn(name = "member_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
@@ -42,6 +45,7 @@ public class Post extends Timestamped {
 
     private Integer likeNum;
 
+    @Builder.Default
     private Boolean isHeart = false;
 
     public void like(){

@@ -86,7 +86,7 @@ public class PostService {
         Post post = Post.builder()
                 .title(postRequestDto.getTitle())
                 .fileName(fileName)
-                .member(member)
+                .nickname(member.getNickname())
                 .imageUrl(imageUrl)
                 .build();
         postRepository.save(post);
