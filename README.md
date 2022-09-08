@@ -44,6 +44,8 @@
 -   게시글 상세조회 (제목, 이미지, 댓글, 좋아요)
 -   게시글 수정 및 삭제 기능
 
+### 🎵 API
+
 <br>
 <img width="520" alt="api 11" src="https://user-images.githubusercontent.com/110277186/189059190-8941e4c3-bdb4-4262-8f57-b96349b78654.png">
 <img width="518" alt="api 22" src="https://user-images.githubusercontent.com/110277186/189059197-8feb39eb-47e0-4b70-9a4c-860d7583ecbd.png">
