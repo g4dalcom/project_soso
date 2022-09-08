@@ -3,6 +3,8 @@
 ### 📌 프로젝트 소개
 - 소소하지만 평범하지 않은 우리들의 일상을 공유하는 공간입니다!
 
+[노션 개발일지](https://rhetorical-durian-6e6.notion.site/73948f6e42834d25bc398fa3b8495fa6?v=a25123e01c9e4b49bc1fcca129261ec0)
+
 <br>
 
 ### 📰 제작기간 & 팀원 소개
