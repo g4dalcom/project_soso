@@ -32,6 +32,7 @@ public class MemberController {
 
     @DeleteMapping( "/api/auth/member/logout")
     public ResponseDto<?> logout(HttpServletRequest request) {
+
         return memberService.logout(request);
     }
 }
