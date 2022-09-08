@@ -12,7 +12,7 @@
 	- 이희수 : 프론트엔드, 상세페이지 & 댓글, 좋아요 관련 API통신 및 view
 	- 이주현 : 백엔드, JWT를 적용한 로그인, 회원가입 기능
 	- 김동훈 : 백엔드, 댓글과 좋아요 기능
-  - 강민승 : 백엔드, 게시글 조회, 작성, 수정, 삭제 기능
+        - 강민승 : 백엔드, 게시글 조회, 작성, 수정, 삭제 기능
 
 <br>
 
@@ -39,6 +39,14 @@
 -   게시글 작성 (제목, 이미지 업로드)
 -   게시글 상세조회 (제목, 이미지, 댓글, 좋아요)
 -   게시글 수정 및 삭제 기능
+
+<br>
+<img width="520" alt="api 11" src="https://user-images.githubusercontent.com/110277186/189059190-8941e4c3-bdb4-4262-8f57-b96349b78654.png">
+<img width="518" alt="api 22" src="https://user-images.githubusercontent.com/110277186/189059197-8feb39eb-47e0-4b70-9a4c-860d7583ecbd.png">
+<img width="526" alt="api 3333" src="https://user-images.githubusercontent.com/110277186/189059688-28a271f5-8f35-4726-8577-28070b52728a.png">
+
+
+
 
 <br>
 
@@ -137,7 +145,13 @@
 	}
 	```
 
+
+	
+
+
 	- 위에서도 설명했듯이 이미지URL에 bucket주소를 제외해야 하므로, substring을 이용하여 폴더경로 전까지 자르고 fileName이라는 변수에 저장하였다. 이 때, Key값대로 값은 잘 저장이 되었으나 이미지를 업로드하지 않을 경우 imgURL이 null인데 null을 substring할 수가 없으니 오류가 생겼다.
 	- 그래서 imgUrl이 null값이면 fileName도 null을 주고, imgUrl이 있을 경우 그 url을 substring해서 key값을 얻을 수 있도록 하였다.
 
 기술매니저님이 코드를 보시고는 다른 방법을 고민해보라고 하였다. 나역시 코드가 지저분하고 불안했던 부분이라 좀 더 공부를 한 후에 수정을 해야할 것 같다.
+
+
