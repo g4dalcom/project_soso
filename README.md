@@ -34,7 +34,6 @@
 
 -   JavaScript
 -   React
--   등등
 
 <br>
 
