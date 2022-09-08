@@ -1,6 +1,7 @@
 package com.example.soso.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,6 +31,7 @@ public class Member extends Timestamped {
     @JsonIgnore
     private String password;
 
+    @JsonIgnoreProperties({"Member"})
     @OneToMany(mappedBy = "member")
     private List<Comment> commentList;
 

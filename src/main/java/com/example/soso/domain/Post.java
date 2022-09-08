@@ -1,6 +1,7 @@
 package com.example.soso.domain;
 
 import com.example.soso.dto.request.PostRequestDto;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,27 +30,30 @@ public class Post extends Timestamped {
     @Column
     private String fileName;
 
+    @Column
+    private String nickname;
+
     @JoinColumn(name = "member_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
+
     //@ManyToOne 과 @OneToMany 로 양방향 관계
     //CascadeType.REMOVE로 게시글이 삭제되면 댓글도 삭제
+    @JsonIgnoreProperties({"Post"})
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @OrderBy("id asc") // 댓글 정렬
     private List<Comment> comments;
 
 
-    private Integer likeNum;
-
     @Builder.Default
     private Boolean isHeart = false;
 
-    public void like(){
-        this.likeNum +=1;
-    }
-    public void dislike(){
-        this.likeNum -=1;
+    private Integer likeNum;
+
+
+    public void updatelikes(int num) {
+        this.likeNum = (num);
     }
 
 

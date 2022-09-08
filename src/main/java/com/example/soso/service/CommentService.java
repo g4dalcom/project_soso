@@ -12,7 +12,6 @@ import com.example.soso.dto.response.CommentResponseDto;
 import com.example.soso.dto.response.ResponseDto;
 import com.example.soso.jwt.TokenProvider;
 import com.example.soso.repository.CommentRepository;
-import com.example.soso.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,10 +23,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class CommentService {
 
     private final CommentRepository commentRepository;
+
     private final TokenProvider tokenProvider;
     private final PostService postService;
 
-    private final PostRepository postRepository;
+
 
 
 
@@ -57,6 +57,7 @@ public class CommentService {
         Comment comment = Comment.builder()
                 .member(member)
                 .post(post)
+                .nickname(member.getNickname())
                 .comment(requestDto.getComment())
                 .build();
         commentRepository.save(comment);
@@ -181,5 +182,4 @@ public class CommentService {
         }
         return tokenProvider.getMemberFromAuthentication();
     }
-
 }
