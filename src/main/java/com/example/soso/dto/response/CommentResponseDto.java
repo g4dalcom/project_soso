@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class CommentResponseDto {
     private Long id;
     private String nickname;
-    private String content;
+    private String comment;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 }
