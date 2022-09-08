@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class CommentService {
 
     private final CommentRepository commentRepository;
-
     private final TokenProvider tokenProvider;
     private final PostService postService;
 
@@ -35,7 +34,7 @@ public class CommentService {
     @Transactional
     public ResponseDto<?> createComment(CommentRequestDto requestDto, HttpServletRequest request){
 
-        if (null == request.getHeader("Refresh-Token")) {
+        if (null == request.getHeader("RefreshToken")) {
             return ResponseDto.fail("MEMBER_NOT_FOUND",
                     "로그인이 필요합니다.");
         }
@@ -58,14 +57,14 @@ public class CommentService {
         Comment comment = Comment.builder()
                 .member(member)
                 .post(post)
-                .content(requestDto.getContent())
+                .comment(requestDto.getComment())
                 .build();
         commentRepository.save(comment);
         return ResponseDto.success(
                 CommentResponseDto.builder()
                         .id(comment.getId())
                         .nickname(comment.getMember().getNickname())
-                        .content(comment.getContent())
+                        .comment(comment.getComment())
                         .createdAt(comment.getCreatedAt())
                         .modifiedAt(comment.getModifiedAt())
                         .build()
@@ -87,7 +86,7 @@ public class CommentService {
                     CommentResponseDto.builder()
                             .id(comment.getId())
                             .nickname(comment.getMember().getNickname())
-                            .content(comment.getContent())
+                            .comment(comment.getComment())
                             .createdAt(comment.getCreatedAt())
                             .modifiedAt(comment.getModifiedAt())
                             .build()
@@ -98,7 +97,7 @@ public class CommentService {
 
     @Transactional
     public ResponseDto<?> updateComment(Long id, CommentRequestDto requestDto, HttpServletRequest request) {
-        if (null == request.getHeader("Refresh-Token")) {
+        if (null == request.getHeader("RefreshToken")) {
             return ResponseDto.fail("MEMBER_NOT_FOUND",
                     "로그인이 필요합니다.");
         }
@@ -132,7 +131,7 @@ public class CommentService {
                 CommentResponseDto.builder()
                         .id(comment.getId())
                         .nickname(comment.getMember().getNickname())
-                        .content(comment.getContent())
+                        .comment(comment.getComment())
                         .createdAt(comment.getCreatedAt())
                         .modifiedAt(comment.getModifiedAt())
                         .build()
@@ -141,7 +140,7 @@ public class CommentService {
 
     @Transactional
     public ResponseDto<?> deleteComment(Long id, HttpServletRequest request) {
-        if (null == request.getHeader("Refresh-Token")) {
+        if (null == request.getHeader("RefreshToken")) {
             return ResponseDto.fail("MEMBER_NOT_FOUND",
                     "로그인이 필요합니다.");
         }
@@ -177,7 +176,7 @@ public class CommentService {
 
     @Transactional
     public Member validateMember(HttpServletRequest request) {
-        if (!tokenProvider.validateToken(request.getHeader("Refresh-Token"))) {
+        if (!tokenProvider.validateToken(request.getHeader("RefreshToken"))) {
             return null;
         }
         return tokenProvider.getMemberFromAuthentication();

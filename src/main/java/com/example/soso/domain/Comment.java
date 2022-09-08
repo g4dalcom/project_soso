@@ -25,7 +25,7 @@ public class Comment extends Timestamped{
     @NotBlank
     @Size(min = 1, max = 255)
     @Column(nullable = false, length = 120)
-    private String content;
+    private String comment;
 
     @Column(nullable = false)
     private String nickname;
@@ -40,7 +40,7 @@ public class Comment extends Timestamped{
     private Member member;
 
     public void update(CommentRequestDto commentRequestDto) {
-        this.content = commentRequestDto.getContent();
+        this.comment = commentRequestDto.getComment();
     }
 
     public boolean validateMember(Member member) {

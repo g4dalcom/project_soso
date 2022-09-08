@@ -5,6 +5,7 @@ import com.example.soso.dto.request.MemberRequestDto;
 import com.example.soso.dto.response.ResponseDto;
 import com.example.soso.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,12 +26,11 @@ public class MemberController {
 
     @PostMapping( "/api/member/login")
     public ResponseDto<?> login(@RequestBody @Valid LoginRequestDto requestDto,
-                                HttpServletResponse response
-    ) {
+                                HttpServletResponse response) {
         return memberService.login(requestDto, response);
     }
 
-    @PostMapping( "/api/auth/member/logout")
+    @DeleteMapping( "/api/auth/member/logout")
     public ResponseDto<?> logout(HttpServletRequest request) {
         return memberService.logout(request);
     }
