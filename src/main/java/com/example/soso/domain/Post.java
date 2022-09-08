@@ -45,15 +45,12 @@ public class Post extends Timestamped {
 
     private Integer likeNum;
 
-    @Builder.Default
-    private Boolean isHeart = false;
 
-    public void like(){
-        this.likeNum +=1;
+    public void updatelikes(int num) {
+        this.likeNum = (num);
     }
-    public void dislike(){
-        this.likeNum -=1;
-    }
+
+
 
 
     public Post(PostRequestDto postRequestDto) {

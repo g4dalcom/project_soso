@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -44,6 +45,9 @@ public class Member extends Timestamped {
         Member member = (Member) o;
         return id != null && Objects.equals(id, member.id);
     }
+//    //좋아요와 관계
+//    @OneToMany(mappedBy = "member",fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+//    private List<Heart> hearts = new ArrayList<Heart>();
 
     @Override
     public int hashCode() {

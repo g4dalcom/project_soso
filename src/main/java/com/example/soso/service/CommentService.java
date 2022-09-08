@@ -28,7 +28,7 @@ public class CommentService {
     private final TokenProvider tokenProvider;
     private final PostService postService;
 
-    private final PostRepository postRepository;
+
 
 
 
@@ -58,14 +58,15 @@ public class CommentService {
         Comment comment = Comment.builder()
                 .member(member)
                 .post(post)
-                .content(requestDto.getContent())
+                .nickname(requestDto.getNickname())
+                .comment(requestDto.getComment())
                 .build();
         commentRepository.save(comment);
         return ResponseDto.success(
                 CommentResponseDto.builder()
                         .id(comment.getId())
                         .nickname(comment.getMember().getNickname())
-                        .content(comment.getContent())
+                        .comment(comment.getComment())
                         .createdAt(comment.getCreatedAt())
                         .modifiedAt(comment.getModifiedAt())
                         .build()
@@ -87,7 +88,7 @@ public class CommentService {
                     CommentResponseDto.builder()
                             .id(comment.getId())
                             .nickname(comment.getMember().getNickname())
-                            .content(comment.getContent())
+                            .comment(comment.getComment())
                             .createdAt(comment.getCreatedAt())
                             .modifiedAt(comment.getModifiedAt())
                             .build()
@@ -132,7 +133,7 @@ public class CommentService {
                 CommentResponseDto.builder()
                         .id(comment.getId())
                         .nickname(comment.getMember().getNickname())
-                        .content(comment.getContent())
+                        .comment(comment.getComment())
                         .createdAt(comment.getCreatedAt())
                         .modifiedAt(comment.getModifiedAt())
                         .build()
@@ -182,5 +183,4 @@ public class CommentService {
         }
         return tokenProvider.getMemberFromAuthentication();
     }
-
 }
