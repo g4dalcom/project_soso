@@ -15,12 +15,20 @@ public class Heart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "postId", nullable = false)
+    @Column(nullable = false)
+    private Long requestId;
+
+    @Column(nullable = false)
+    private String nickname;
+
+    @JoinColumn(name = "member_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
-    private Post post;
+    private Member member;
 
-    @Column
-    public Boolean isLike = false;
+    public void setMember(Member member){
+        this.member = member;
+    }
 
+    public boolean validateMember(Member member) { return !this.member.equals(member); }
+    }
 
-}

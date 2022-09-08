@@ -1,6 +1,5 @@
 package com.example.soso.service;
 
-
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
@@ -48,14 +47,14 @@ public class PostService {
         }
 
         return ResponseDto.success(
-            PostResponseDto.builder()
-                    .id(post.getId())
-                    .title(post.getTitle())
-                    .nickName(post.getMember().getNickname())
-                    .imageUrl(post.getImageUrl())
-                    .createdAt(post.getCreatedAt())
-                    .modifiedAt(post.getModifiedAt())
-                    .build()
+                PostResponseDto.builder()
+                        .id(post.getId())
+                        .title(post.getTitle())
+                        .nickName(post.getMember().getNickname())
+                        .imageUrl(post.getImageUrl())
+                        .createdAt(post.getCreatedAt())
+                        .modifiedAt(post.getModifiedAt())
+                        .build()
         );
 
     }
@@ -86,20 +85,20 @@ public class PostService {
         Post post = Post.builder()
                 .title(postRequestDto.getTitle())
                 .fileName(fileName)
-                .member(member)
+//                .nickname(member.getNickname())
                 .imageUrl(imageUrl)
                 .build();
         postRepository.save(post);
 
         return ResponseDto.success(
-            PostResponseDto.builder()
-                    .id(post.getId())
-                    .title(post.getTitle())
-                    .nickName(post.getMember().getNickname())
-                    .imageUrl(post.getImageUrl())
-                    .createdAt(post.getCreatedAt())
-                    .modifiedAt(post.getModifiedAt())
-                    .build());
+                PostResponseDto.builder()
+                        .id(post.getId())
+                        .title(post.getTitle())
+                        .nickName(post.getMember().getNickname())
+                        .imageUrl(post.getImageUrl())
+                        .createdAt(post.getCreatedAt())
+                        .modifiedAt(post.getModifiedAt())
+                        .build());
     }
 
     // 게시글 수정 처리
@@ -132,7 +131,7 @@ public class PostService {
             if(post.getImageUrl() != null) {
                 final AmazonS3 s3 = AmazonS3ClientBuilder.standard().withRegion("ap-northeast-2").build();
 
-                    s3.deleteObject("postblog-bucket", post.getFileName());
+                s3.deleteObject("postblog-bucket", post.getFileName());
 
             }
 
@@ -150,13 +149,13 @@ public class PostService {
 
         post.update(updatePost);
         return ResponseDto.success(
-            PostResponseDto.builder()
-                .id(post.getId())
-                .title(post.getTitle())
-                .nickName(post.getMember().getNickname())
-                .imageUrl(post.getImageUrl())
-                .modifiedAt(post.getModifiedAt())
-                .build());
+                PostResponseDto.builder()
+                        .id(post.getId())
+                        .title(post.getTitle())
+                        .nickName(post.getMember().getNickname())
+                        .imageUrl(post.getImageUrl())
+                        .modifiedAt(post.getModifiedAt())
+                        .build());
 
     }
 

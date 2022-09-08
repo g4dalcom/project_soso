@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,6 +30,7 @@ public class Post extends Timestamped {
     @Column
     private String fileName;
 
+
     @JoinColumn(name = "member_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
@@ -39,16 +41,12 @@ public class Post extends Timestamped {
     @OrderBy("id asc") // 댓글 정렬
     private List<Comment> comments;
 
-    @OneToMany(mappedBy = "post",fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private List<Heart> hearts;
 
     private Integer likeNum;
 
 
-    public void like() {
-        this.likeNum += 1;
-        System.out.println("content = " + this.comments);
-        System.out.println("likes = " + this.likeNum);
+    public void updatelikes(int num) {
+        this.likeNum = (num);
     }
 
 
