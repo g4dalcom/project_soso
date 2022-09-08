@@ -76,6 +76,7 @@ public class SecurityConfiguration {
                 .antMatchers("/api/auth/post/**").permitAll()
                 .antMatchers("/api/auth/comment/**").permitAll()
                 .antMatchers("/api/auth/subComment/**").permitAll()
+                .antMatchers("/api/auth/like/**").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
