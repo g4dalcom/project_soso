@@ -23,7 +23,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class CommentService {
 
     private final CommentRepository commentRepository;
-
     private final TokenProvider tokenProvider;
     private final PostService postService;
 
@@ -34,15 +33,15 @@ public class CommentService {
     @Transactional
     public ResponseDto<?> createComment(CommentRequestDto requestDto, HttpServletRequest request){
 
-        if (null == request.getHeader("RefreshToken")) {
-            return ResponseDto.fail("MEMBER_NOT_FOUND",
-                    "로그인이 필요합니다.");
-        }
-
-        if (null == request.getHeader("Authorization")) {
-            return ResponseDto.fail("MEMBER_NOT_FOUND",
-                    "로그인이 필요합니다.");
-        }
+//        if (null == request.getHeader("RefreshToken")) {
+//            return ResponseDto.fail("MEMBER_NOT_FOUND",
+//                    "로그인이 필요합니다.");
+//        }
+//
+//        if (null == request.getHeader("Authorization")) {
+//            return ResponseDto.fail("MEMBER_NOT_FOUND",
+//                    "로그인이 필요합니다.");
+//        }
 
         Member member = validateMember(request);
         if (null == member) {
@@ -98,15 +97,15 @@ public class CommentService {
 
     @Transactional
     public ResponseDto<?> updateComment(Long id, CommentRequestDto requestDto, HttpServletRequest request) {
-        if (null == request.getHeader("RefreshToken")) {
-            return ResponseDto.fail("MEMBER_NOT_FOUND",
-                    "로그인이 필요합니다.");
-        }
-
-        if (null == request.getHeader("Authorization")) {
-            return ResponseDto.fail("MEMBER_NOT_FOUND",
-                    "로그인이 필요합니다.");
-        }
+//        if (null == request.getHeader("RefreshToken")) {
+//            return ResponseDto.fail("MEMBER_NOT_FOUND",
+//                    "로그인이 필요합니다.");
+//        }
+//
+//        if (null == request.getHeader("Authorization")) {
+//            return ResponseDto.fail("MEMBER_NOT_FOUND",
+//                    "로그인이 필요합니다.");
+//        }
 
         Member member = validateMember(request);
         if (null == member) {
@@ -141,15 +140,15 @@ public class CommentService {
 
     @Transactional
     public ResponseDto<?> deleteComment(Long id, HttpServletRequest request) {
-        if (null == request.getHeader("RefreshToken")) {
-            return ResponseDto.fail("MEMBER_NOT_FOUND",
-                    "로그인이 필요합니다.");
-        }
-
-        if (null == request.getHeader("Authorization")) {
-            return ResponseDto.fail("MEMBER_NOT_FOUND",
-                    "로그인이 필요합니다.");
-        }
+//        if (null == request.getHeader("RefreshToken")) {
+//            return ResponseDto.fail("MEMBER_NOT_FOUND",
+//                    "로그인이 필요합니다.");
+//        }
+//
+//        if (null == request.getHeader("Authorization")) {
+//            return ResponseDto.fail("MEMBER_NOT_FOUND",
+//                    "로그인이 필요합니다.");
+//        }
 
         Member member = validateMember(request);
         if (null == member) {
